@@ -574,3 +574,82 @@
     z-index: 6 !important;
   }
 }
+
+
+/* iPhone full-screen handset layout (2026-11-25).
+   Scale the complete handset to the maximum size that fits the viewport,
+   and place the return arrow on the handset's upper bezel. Existing key hit
+   areas and their JavaScript handlers remain unchanged. */
+@media (max-width: 650px) {
+  #phoneScreen.phone-screen:not(.hidden) {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    min-height: 0 !important;
+    max-height: 100dvh !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: hidden !important;
+    overscroll-behavior: none !important;
+    box-sizing: border-box !important;
+  }
+  #phoneScreen .phone-panel-stage {
+    display: block !important;
+    position: relative !important;
+    flex: 0 0 auto !important;
+    width: min(100vw, calc((100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 12px) * .54)) !important;
+    max-width: none !important;
+    max-height: none !important;
+    aspect-ratio: 540 / 1000 !important;
+    height: auto !important;
+    margin: auto !important;
+    overflow: visible !important;
+  }
+  #phoneScreen .phone-panel-stage #phoneWrap {
+    position: relative !important;
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    aspect-ratio: 540 / 1000 !important;
+    flex: none !important;
+  }
+  #phoneScreen .phone-panel-stage .panel-art {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+  }
+  #phoneScreen #phoneWrap > #back.back {
+    position: absolute !important;
+    z-index: 30 !important;
+    top: 2.1% !important;
+    left: 50% !important;
+    width: clamp(30px, 8vw, 40px) !important;
+    height: clamp(30px, 8vw, 40px) !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: grid !important;
+    place-items: center !important;
+    transform: translateX(-50%) !important;
+    border: 1px solid rgba(225, 225, 225, .42) !important;
+    border-radius: 50% !important;
+    background: rgba(0, 0, 0, .72) !important;
+    color: #fff !important;
+    font: 400 24px/1 Arial, sans-serif !important;
+    letter-spacing: 0 !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .65) !important;
+    backdrop-filter: blur(4px) !important;
+    -webkit-backdrop-filter: blur(4px) !important;
+    cursor: pointer !important;
+    touch-action: manipulation !important;
+  }
+  #phoneScreen #phoneWrap > #back.back:active {
+    transform: translateX(-50%) scale(.92) !important;
+  }
+}
