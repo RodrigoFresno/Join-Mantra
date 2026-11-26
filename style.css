@@ -698,12 +698,34 @@
 }
 
 
-/* Ajuste mobile único: zoom de 128%, limitado à altura útil do telefone.
-   Desktop permanece intocado. */
+/* Mobile: manter o aparelho em pé e aplicar zoom VISUAL real de 128%.
+   A escala é independente do limite de largura; desktop não é afetado. */
 @media (max-width: 650px) {
+  #phoneScreen.phone-screen:not(.hidden) {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: hidden !important;
+  }
   #phoneScreen .phone-panel-stage {
-    width: min(128vw, calc(87dvh * 0.54)) !important;
-    max-height: 87dvh !important;
+    width: min(92vw, calc(87dvh * 0.54)) !important;
+    max-height: none !important;
+    aspect-ratio: 540 / 1000 !important;
+    flex: 0 0 auto !important;
+    transform: scale(1.28) !important;
+    transform-origin: center center !important;
+    margin: 0 auto !important;
+  }
+  #phoneScreen .phone-panel-stage #phoneWrap {
+    width: 100% !important;
+    height: 100% !important;
+    aspect-ratio: 540 / 1000 !important;
+  }
+  #phoneScreen .phone-panel-stage .panel-art {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: fill !important;
   }
   #phoneScreen .phone-panel-stage > .phone-code {
     left: 9% !important;
