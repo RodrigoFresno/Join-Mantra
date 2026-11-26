@@ -531,7 +531,7 @@
     max-height: none !important;
     margin: 0 !important;
     box-sizing: border-box !important;
-    overflow: hidden !important;
+    overflow: visible !important;
   }
 
   /* Welcome video fills the installed-app viewport edge to edge. */
@@ -606,7 +606,7 @@
     padding: env(safe-area-inset-top) 0 env(safe-area-inset-bottom) !important;
     background: #000 !important;
     background-image: none !important;
-    overflow: hidden !important;
+    overflow: visible !important;
     overscroll-behavior: none !important;
   }
   #phoneScreen .phone-panel-stage {
