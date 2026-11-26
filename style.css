@@ -760,3 +760,75 @@
     overflow: hidden !important;
   }
 }
+
+
+/* FINAL MOBILE FIX v41: manifesto can scroll to its real end; handset is a
+   fixed full-screen overlay and regains the larger 128% presentation. */
+@media (max-width: 650px) {
+  html, body {
+    height: auto !important;
+    min-height: 100% !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  #manifesto.manifesto:not(.hidden) {
+    position: relative !important;
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 100dvh !important;
+    max-height: none !important;
+    overflow: visible !important;
+    padding-bottom: calc(8vh + env(safe-area-inset-bottom) + 32px) !important;
+    background-attachment: scroll !important;
+  }
+  #manifesto .phone-found {
+    margin-bottom: 24px !important;
+  }
+
+  #phoneScreen.phone-screen:not(.hidden) {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    min-height: 0 !important;
+    max-height: 100dvh !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: hidden !important;
+    overscroll-behavior: none !important;
+    background: #000 !important;
+    z-index: 1000 !important;
+  }
+  #phoneScreen .phone-panel-stage {
+    width: min(92vw, calc(100dvh * 0.54 / 1.28)) !important;
+    max-width: none !important;
+    max-height: none !important;
+    aspect-ratio: 540 / 1000 !important;
+    flex: 0 0 auto !important;
+    margin: 0 auto !important;
+    transform: scale(1.28) !important;
+    transform-origin: center center !important;
+  }
+  #phoneScreen .phone-panel-stage #phoneWrap {
+    width: 100% !important;
+    height: 100% !important;
+    aspect-ratio: 540 / 1000 !important;
+  }
+  #phoneScreen .phone-panel-stage .panel-art {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: fill !important;
+  }
+  #phoneScreen .phone-panel-stage > .phone-code {
+    left: 9% !important;
+    top: 72% !important;
+  }
+}
