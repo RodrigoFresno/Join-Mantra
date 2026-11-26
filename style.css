@@ -477,3 +477,32 @@
     max-height: 96svh!important;
   }
 }
+
+
+/* Mobile framing fix: center the source video without changing its encoded resolution.
+   Keep the existing WELCOME button placement and all poster/page-turn behavior intact. */
+.landing {
+  width: 100%;
+  margin-inline: auto;
+}
+.intro-video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  object-position: 50% 50%;
+  transform: none;
+}
+@media (max-width: 600px) {
+  .intro-video {
+    object-position: 50% 50% !important;
+  }
+  .welcome {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .welcome:hover {
+    transform: translateX(-50%) translateY(-1px);
+  }
+}
