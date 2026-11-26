@@ -1,19 +1,4 @@
 (()=>{const $=id=>document.getElementById(id);const landing=$('landing'),posterScreen=$('posterScreen'),sheet=$('posterSheet'),manifesto=$('manifesto'),phoneScreen=$('phoneScreen'),join=$('join'),turnPoster=$('turnPoster'),phoneClosed=$('phoneClosed'),back=$('back'),digits=$('digits'),status=$('status'),player=$('player'),ring=$('ring'),phoneWrap=$('phoneWrap'),manifestoAudio=$('manifestoAudio');let number='',calling=false,ringTimer=null;const code='08008886448';
-const introVideo=document.querySelector('.intro-video');
-function keepIntroVideoPlaying(){
- if(!introVideo||!landing||landing.classList.contains('hidden'))return;
- introVideo.muted=true;introVideo.defaultMuted=true;introVideo.playsInline=true;introVideo.loop=true;
- if(introVideo.paused){const attempt=introVideo.play();if(attempt&&typeof attempt.catch==='function')attempt.catch(()=>{});}
-}
-if(introVideo){
- introVideo.addEventListener('loadeddata',keepIntroVideoPlaying);
- introVideo.addEventListener('canplay',keepIntroVideoPlaying);
- introVideo.addEventListener('ended',()=>{introVideo.currentTime=0;keepIntroVideoPlaying();});
- window.addEventListener('pageshow',keepIntroVideoPlaying);
- document.addEventListener('visibilitychange',()=>{if(!document.hidden)keepIntroVideoPlaying();});
- document.addEventListener('pointerdown',keepIntroVideoPlaying,{capture:true,passive:true});
- keepIntroVideoPlaying();
-}
 let phoneAudioContext=null;
 function phoneSound(type,key){
  try{
