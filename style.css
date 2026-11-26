@@ -884,3 +884,186 @@
     font-weight: 500 !important;
   }
 }
+
+
+/* iOS home-screen viewport correction.
+   Mobile only: remove the exposed body-colour strips from the landing and poster
+   screens, fit the poster within its black viewport, and show the entire phone
+   artwork at its natural 540:1000 ratio so the bottom keypad row stays usable.
+   The original poster-turn animation and all keypad hitboxes are untouched. */
+@media (max-width: 650px) {
+  html, body {
+    min-height: 100%;
+    background: #000 !important;
+    overscroll-behavior: none;
+  }
+
+  #landing.landing:not(.hidden),
+  #posterScreen.poster-screen:not(.hidden),
+  #phoneScreen.phone-screen:not(.hidden) {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+  }
+
+  /* Welcome screen: the video itself covers the full installed-app viewport. */
+  #landing.landing:not(.hidden) {
+    display: block !important;
+    padding: 0 !important;
+    background: #000 !important;
+  }
+  #landing .intro-video {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: 52% 50% !important;
+  }
+  #landing .video-shade {
+    position: absolute !important;
+    inset: 0 !important;
+  }
+
+  /* Poster: black fills the whole viewport; preserve the artwork ratio and
+     keep the existing page-turn layer, timing and interaction unchanged. */
+  #posterScreen.poster-screen:not(.hidden) {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 !important;
+    background: #000 !important;
+    background-image: none !important;
+    perspective: 1800px !important;
+    isolation: isolate !important;
+  }
+  #posterFlip.poster-scene {
+    position: relative !important;
+    flex: 0 0 auto !important;
+    width: min(98vw, calc(92dvh * 0.7107)) !important;
+    height: auto !important;
+    max-width: none !important;
+    max-height: 92dvh !important;
+    aspect-ratio: 3130 / 4403 !important;
+    margin: auto !important;
+    background: #000 !important;
+  }
+  #posterFlip .poster-page,
+  #posterFlip .poster-back,
+  #posterFlip .poster-sheet:after {
+    background: #000 !important;
+    background-image: none !important;
+  }
+  #posterFlip .poster-sheet img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+  }
+
+  /* Telephone: scale the complete 540:1000 artwork to the available width,
+     with a height cap. Never crop the * 0 # keypad row. */
+  #phoneScreen.phone-screen:not(.hidden) {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: env(safe-area-inset-top) 0 env(safe-area-inset-bottom) !important;
+    background: #000 !important;
+    background-image: none !important;
+    overscroll-behavior: none !important;
+  }
+  #phoneScreen .phone-panel-stage {
+    position: relative !important;
+    display: block !important;
+    flex: 0 0 auto !important;
+    width: min(104vw, calc(94dvh * 0.54)) !important;
+    height: auto !important;
+    max-width: none !important;
+    max-height: none !important;
+    aspect-ratio: 540 / 1000 !important;
+    margin: auto !important;
+    overflow: visible !important;
+    filter: none !important;
+    transform: none !important;
+  }
+  #phoneScreen .phone-panel-stage #phoneWrap {
+    position: relative !important;
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    max-height: none !important;
+    aspect-ratio: 540 / 1000 !important;
+    margin: 0 !important;
+    transform: none !important;
+  }
+  #phoneScreen .phone-panel-stage .panel-art {
+    position: absolute !important;
+    inset: 0 !important;
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+    object-position: center !important;
+  }
+
+  /* Invisible return target on the upper-left physical key, above the green
+     call key. The green key's original #call hitbox remains unobstructed. */
+  #phoneScreen #phoneWrap > #back.back {
+    position: absolute !important;
+    z-index: 60 !important;
+    left: 12.5% !important;
+    top: 35.8% !important;
+    width: 22% !important;
+    height: 8.1% !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: block !important;
+    border: 0 !important;
+    border-radius: 25% !important;
+    background: transparent !important;
+    color: transparent !important;
+    font-size: 0 !important;
+    box-shadow: none !important;
+    opacity: 0 !important;
+    pointer-events: auto !important;
+    touch-action: manipulation !important;
+  }
+
+  /* Plain 0800 lettering, vertical on the handset's left metal/blue edge.
+     No sticker, badge, box or background. */
+  #phoneScreen .phone-panel-stage > .phone-code {
+    position: absolute !important;
+    z-index: 40 !important;
+    left: 1.8% !important;
+    top: 53% !important;
+    width: max-content !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    transform: translate(-50%, -50%) rotate(-90deg) !important;
+    transform-origin: center center !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    color: rgba(245,245,245,.92) !important;
+    font: 500 8px/1 monospace !important;
+    letter-spacing: .045em !important;
+    white-space: nowrap !important;
+    text-shadow: 0 1px 2px #000 !important;
+    box-shadow: none !important;
+    pointer-events: none !important;
+  }
+  #phoneScreen .phone-panel-stage > .phone-code strong {
+    color: inherit !important;
+    font-weight: 500 !important;
+  }
+}
