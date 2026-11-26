@@ -506,3 +506,32 @@
     transform: translateX(-50%) translateY(-1px);
   }
 }
+
+
+/* Screenshot-based iPhone framing: align Oliver with the centered WELCOME button.
+   The source clip is landscape, so a small object-position adjustment compensates
+   for the subject being slightly right of the frame's geometric center. */
+@media (max-width: 600px) {
+  #landing.landing {
+    height: 100vh;
+    height: 100dvh;
+    min-height: 100dvh;
+    width: 100vw;
+    margin: 0;
+    background: #08051e;
+  }
+  #landing .intro-video {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 52% 50% !important;
+    transform: none !important;
+  }
+  #landing .video-shade {
+    position: absolute;
+    inset: 0;
+  }
+}
