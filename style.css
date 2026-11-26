@@ -834,21 +834,66 @@
 }
 
 
-/* MOBILE VIEWPORT EDGE FIX v44: keep every screen flush with the device viewport.
-   The manifesto scrolls inside its own fixed screen, so no body/safe-area strip is exposed. */
+
+/* MOBILE FINAL: natural document scrolling for the full manifesto;
+   intro and poster remain edge-to-edge, handset overlay stays unchanged. */
 @media (max-width: 650px) {
   html, body {
     width: 100% !important;
-    height: 100% !important;
+    height: auto !important;
     min-height: 100% !important;
     margin: 0 !important;
-    overflow: hidden !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
     background: #000 !important;
-    overscroll-behavior: none !important;
+    overscroll-behavior-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
   }
   #landing.landing:not(.hidden),
-  #posterScreen.poster-screen:not(.hidden),
-  #manifesto.manifesto:not(.hidden),
+  #posterScreen.poster-screen:not(.hidden) {
+    position: relative !important;
+    inset: auto !important;
+    width: 100% !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    min-height: 0 !important;
+    max-height: 100dvh !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+  }
+  #landing.landing:not(.hidden) {
+    display: block !important;
+    padding: 0 !important;
+    background: #000 !important;
+  }
+  #landing .intro-video {
+    position: absolute !important;
+    inset: 0 !important;
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: 52% 50% !important;
+  }
+  #manifesto.manifesto:not(.hidden) {
+    position: relative !important;
+    inset: auto !important;
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 100vh !important;
+    min-height: 100dvh !important;
+    max-height: none !important;
+    margin: 0 !important;
+    overflow: visible !important;
+    box-sizing: border-box !important;
+    padding: calc(20px + env(safe-area-inset-top)) 17px calc(7vh + env(safe-area-inset-bottom)) !important;
+    background-attachment: scroll !important;
+  }
+  #manifesto .phone-found {
+    margin-bottom: calc(24px + env(safe-area-inset-bottom)) !important;
+  }
   #phoneScreen.phone-screen:not(.hidden) {
     position: fixed !important;
     inset: 0 !important;
@@ -857,37 +902,6 @@
     height: 100dvh !important;
     min-height: 0 !important;
     max-height: 100dvh !important;
-    margin: 0 !important;
-    box-sizing: border-box !important;
-  }
-  #landing.landing:not(.hidden) {
-    overflow: hidden !important;
-    padding: 0 !important;
-    background: #000 !important;
-  }
-  #landing .intro-video {
-    position: absolute !important;
-    inset: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important;
-  }
-  #posterScreen.poster-screen:not(.hidden) {
-    overflow: hidden !important;
-    padding: 0 !important;
-    background: #000 !important;
-  }
-  #manifesto.manifesto:not(.hidden) {
-    display: block !important;
-    overflow-x: hidden !important;
-    overflow-y: auto !important;
-    -webkit-overflow-scrolling: touch !important;
-    overscroll-behavior-y: contain !important;
-    padding-top: calc(20px + env(safe-area-inset-top)) !important;
-    padding-bottom: calc(8vh + env(safe-area-inset-bottom) + 32px) !important;
-    background-attachment: scroll !important;
-  }
-  #phoneScreen.phone-screen:not(.hidden) {
     overflow: hidden !important;
   }
 }
