@@ -653,3 +653,115 @@
     transform: translateX(-50%) scale(.92) !important;
   }
 }
+
+
+/* Final iPhone composition based on the user's full-screen reference.
+   Desktop layout is untouched. The handset artwork is rendered at its native
+   540:1000 ratio and intentionally bleeds past the viewport sides, matching
+   the reference crop while filling the full mobile screen height. */
+@media (max-width: 650px) {
+  #phoneScreen.phone-screen:not(.hidden) {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: stretch !important;
+    justify-content: center !important;
+    overflow: hidden !important;
+    background: #000 !important;
+    box-sizing: border-box !important;
+  }
+
+  #phoneScreen .phone-panel-stage {
+    position: relative !important;
+    display: block !important;
+    flex: 0 0 auto !important;
+    width: calc(100dvh * 0.54) !important;
+    height: 100dvh !important;
+    max-width: none !important;
+    max-height: none !important;
+    aspect-ratio: 540 / 1000 !important;
+    margin: 0 !important;
+    overflow: visible !important;
+    filter: none !important;
+  }
+
+  #phoneScreen .phone-panel-stage #phoneWrap {
+    position: relative !important;
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    aspect-ratio: auto !important;
+    margin: 0 !important;
+    transform: none !important;
+  }
+
+  #phoneScreen .phone-panel-stage .panel-art {
+    position: absolute !important;
+    inset: 0 !important;
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: fill !important;
+    object-position: center !important;
+  }
+
+  /* The physical green handset key becomes the return-to-manifesto trigger. */
+  #phoneScreen #phoneWrap > #back.back {
+    position: absolute !important;
+    z-index: 50 !important;
+    left: 12% !important;
+    top: 46.5% !important;
+    width: 23% !important;
+    height: 9.2% !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: block !important;
+    transform: none !important;
+    border: 0 !important;
+    border-radius: 35% !important;
+    background: transparent !important;
+    color: transparent !important;
+    box-shadow: none !important;
+    opacity: 1 !important;
+    cursor: pointer !important;
+    touch-action: manipulation !important;
+  }
+
+  #phoneScreen #phoneWrap > #back.back:active {
+    transform: scale(.96) !important;
+    background: rgba(255,255,255,.08) !important;
+  }
+
+  /* Keep the 0800 number as a small vertical sticker on the left metal/blue edge. */
+  #phoneScreen .phone-panel-stage > .phone-code {
+    position: absolute !important;
+    z-index: 40 !important;
+    left: 1.5% !important;
+    top: 48% !important;
+    width: auto !important;
+    margin: 0 !important;
+    padding: 5px 3px !important;
+    transform: translate(-28%, -50%) rotate(-90deg) !important;
+    transform-origin: center center !important;
+    border: 1px solid rgba(190,190,180,.55) !important;
+    border-radius: 3px !important;
+    background: rgba(8,10,16,.9) !important;
+    color: #ddd !important;
+    font: italic 600 clamp(8px, 2vw, 11px)/1.05 monospace !important;
+    letter-spacing: .08em !important;
+    white-space: nowrap !important;
+    box-shadow: 0 1px 5px #000a !important;
+    pointer-events: none !important;
+  }
+}
