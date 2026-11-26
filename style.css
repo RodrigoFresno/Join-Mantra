@@ -810,7 +810,7 @@
 /* v24 — voltar ao enquadramento completo: zoom leve sem cortar nenhuma tecla. */
 @media (max-width: 650px) {
   #phoneScreen .phone-panel-stage {
-    width: min(102vw, calc(87dvh * 0.54)) !important;
+    width: min(112vw, calc(87dvh * 0.54)) !important;
     max-height: 87dvh !important;
   }
   #phoneScreen .phone-panel-stage > .phone-code {
