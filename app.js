@@ -1,4 +1,20 @@
 (()=>{const $=id=>document.getElementById(id);const landing=$('landing'),posterScreen=$('posterScreen'),sheet=$('posterSheet'),manifesto=$('manifesto'),phoneScreen=$('phoneScreen'),join=$('join'),turnPoster=$('turnPoster'),phoneClosed=$('phoneClosed'),back=$('back'),digits=$('digits'),status=$('status'),player=$('player'),ring=$('ring'),phoneWrap=$('phoneWrap'),manifestoAudio=$('manifestoAudio');let number='',calling=false,ringTimer=null;const code='08008886448';
+// Keep the app screens matched to Safari's actually visible iPhone viewport.
+function syncMantraViewport(){
+ const viewport=window.visualViewport;
+ const height=viewport?viewport.height:window.innerHeight;
+ const top=viewport?viewport.offsetTop:0;
+ document.documentElement.style.setProperty('--mantra-vh',height+'px');
+ document.documentElement.style.setProperty('--mantra-vtop',top+'px');
+}
+syncMantraViewport();
+window.addEventListener('resize',syncMantraViewport,{passive:true});
+window.addEventListener('orientationchange',()=>setTimeout(syncMantraViewport,120),{passive:true});
+window.addEventListener('pageshow',syncMantraViewport,{passive:true});
+if(window.visualViewport){
+ window.visualViewport.addEventListener('resize',syncMantraViewport,{passive:true});
+ window.visualViewport.addEventListener('scroll',syncMantraViewport,{passive:true});
+}
 const introVideo=document.querySelector('.intro-video');
 function keepIntroVideoPlaying(){
  if(!introVideo||!landing||landing.classList.contains('hidden'))return;
