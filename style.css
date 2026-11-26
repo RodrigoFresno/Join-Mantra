@@ -1067,3 +1067,56 @@
     font-weight: 500 !important;
   }
 }
+
+
+/* iPhone final micro-adjustment from the 2026-11-25 screen recording.
+   Keep the poster and all existing phone hit targets/flip logic unchanged. */
+@media (max-width: 650px) {
+  /* Stretch by the fixed top/bottom edges instead of relying on iOS's
+     sometimes-short 100dvh value in an installed Home Screen web app. */
+  html, body {
+    width: 100%;
+    min-height: 100%;
+    margin: 0;
+    background: #000 !important;
+  }
+  #landing.landing:not(.hidden) {
+    position: fixed !important;
+    top: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+    background: #000 !important;
+  }
+  #landing .intro-video {
+    position: absolute !important;
+    inset: 0 !important;
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 100% !important;
+    object-fit: cover !important;
+    object-position: 52% 50% !important;
+  }
+  #landing .video-shade {
+    position: absolute !important;
+    inset: 0 !important;
+  }
+
+  /* Just over 3% larger than the previous 104vw / 94dvh setting.
+     The image keeps its original aspect ratio, so the full keypad remains
+     visible and every existing transparent button target scales with it. */
+  #phoneScreen .phone-panel-stage {
+    width: min(108vw, calc(97dvh * 0.54)) !important;
+    aspect-ratio: 540 / 1000 !important;
+    height: auto !important;
+    margin: auto !important;
+  }
+}
