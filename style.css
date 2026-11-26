@@ -698,8 +698,8 @@
 }
 
 
-/* Mobile: manter o aparelho em pé e aplicar zoom VISUAL real de 128%.
-   A escala é independente do limite de largura; desktop não é afetado. */
+/* Mobile: aparelho em retrato, sem zoom adicional; apenas deslocamento vertical.
+   O número lateral fica explicitamente girado para leitura vertical. */
 @media (max-width: 650px) {
   #phoneScreen.phone-screen:not(.hidden) {
     display: flex !important;
@@ -713,7 +713,7 @@
     max-height: none !important;
     aspect-ratio: 540 / 1000 !important;
     flex: 0 0 auto !important;
-    transform: scale(1.28) !important;
+    transform: translateY(12px) !important;
     transform-origin: center center !important;
     margin: 0 auto !important;
   }
@@ -730,6 +730,9 @@
   #phoneScreen .phone-panel-stage > .phone-code {
     left: 9% !important;
     top: 72% !important;
+    writing-mode: horizontal-tb !important;
+    transform: translate(-50%, -50%) rotate(-90deg) !important;
+    transform-origin: center center !important;
     font-size: 8px !important;
   }
 }
