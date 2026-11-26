@@ -956,3 +956,17 @@
     overflow: hidden !important;
   }
 }
+
+
+/* iPhone Safari: size visible screens from VisualViewport, not stale 100dvh. */
+@media (max-width: 650px) {
+  #landing.landing:not(.hidden),
+  #posterScreen.poster-screen:not(.hidden),
+  #phoneScreen.phone-screen:not(.hidden) {
+    top: var(--mantra-vtop, 0px) !important;
+    bottom: auto !important;
+    height: var(--mantra-vh, 100dvh) !important;
+    min-height: 0 !important;
+    max-height: none !important;
+  }
+}
