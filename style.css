@@ -698,123 +698,16 @@
 }
 
 
-/* Mobile fine-tune 2026-11-26: slightly larger handset, keep all keypad keys visible.
-   Phone number follows the silver left bezel vertically; no badge or horizontal label. */
+/* Ajuste mobile único: zoom de 128%, limitado à altura útil do telefone.
+   Desktop permanece intocado. */
 @media (max-width: 650px) {
   #phoneScreen .phone-panel-stage {
-    width: min(112vw, calc(97dvh * 0.54)) !important;
-    max-height: 97dvh !important;
-  }
-  #phoneScreen .phone-panel-stage > .phone-code {
-    left: 5.5% !important;
-    top: 51% !important;
-    transform: translate(-50%, -50%) rotate(-90deg) !important;
-    transform-origin: center center !important;
-    background: transparent !important;
-    border: 0 !important;
-    border-radius: 0 !important;
-    padding: 0 !important;
-    box-shadow: none !important;
-    white-space: nowrap !important;
-  }
-}
-
-
-/* v19: number is now a child of the handset stage, so this selector truly targets it.
-   Slight extra iPhone zoom; retain the complete keypad and put hotline vertically on silver side. */
-@media (max-width: 650px) {
-  #phoneScreen .phone-panel-stage {
-    width: min(116vw, calc(99dvh * 0.54)) !important;
-    max-height: 99dvh !important;
-  }
-  #phoneScreen .phone-panel-stage > .phone-code {
-    display: block !important;
-    position: absolute !important;
-    z-index: 45 !important;
-    left: 1.6% !important;
-    top: 50% !important;
-    width: max-content !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    transform: translate(-50%, -50%) rotate(-90deg) !important;
-    transform-origin: center center !important;
-    writing-mode: horizontal-tb !important;
-    background: transparent !important;
-    border: 0 !important;
-    border-radius: 0 !important;
-    box-shadow: none !important;
-    color: rgba(245,245,245,.92) !important;
-    font: 500 8px/1 monospace !important;
-    letter-spacing: .045em !important;
-    white-space: nowrap !important;
-    text-shadow: 0 1px 2px #000 !important;
-    pointer-events: none !important;
-  }
-  #phoneScreen .phone-panel-stage > .phone-code strong {
-    color: inherit !important;
-    font-weight: 500 !important;
-  }
-}
-
-
-/* v20 — hotline integrated on the handset seam (silver/white to blue).
-   Same placement on desktop and mobile; no badge, backing, or external label. */
-#phoneScreen .phone-panel-stage > .phone-code {
-  display: block !important;
-  position: absolute !important;
-  z-index: 45 !important;
-  left: 13% !important;
-  top: 50% !important;
-  width: max-content !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  transform: translate(-50%, -50%) rotate(-90deg) !important;
-  transform-origin: center center !important;
-  writing-mode: horizontal-tb !important;
-  background: transparent !important;
-  border: 0 !important;
-  border-radius: 0 !important;
-  box-shadow: none !important;
-  color: rgba(245,245,245,.92) !important;
-  font: 500 8px/1 monospace !important;
-  letter-spacing: .045em !important;
-  white-space: nowrap !important;
-  text-shadow: 0 1px 2px #000 !important;
-  pointer-events: none !important;
-}
-#phoneScreen .phone-panel-stage > .phone-code strong {
-  color: inherit !important;
-  font-weight: 500 !important;
-}
-@media (max-width: 650px) {
-  #phoneScreen .phone-panel-stage {
-    width: min(126vw, calc(100dvh * 0.54)) !important;
-    max-height: 100dvh !important;
-  }
-  #phoneScreen .phone-panel-stage > .phone-code {
-    left: 13% !important;
-    top: 50% !important;
-    font-size: 8px !important;
-  }
-}
-
-
-/* v23 — alinhamento pela marcação enviada no iPhone 16e: número na lateral inferior do aparelho; zoom até preencher a área útil. */
-#phoneScreen .phone-panel-stage > .phone-code { left: 9% !important; top: 72% !important; }
-@media (max-width: 650px) {
- #phoneScreen .phone-panel-stage { width: min(138vw, calc(112dvh * 0.54)) !important; max-height: 112dvh !important; }
- #phoneScreen .phone-panel-stage > .phone-code { left: 9% !important; top: 72% !important; font-size: 8px !important; }
-}
-
-
-/* v24 — voltar ao enquadramento completo: zoom leve sem cortar nenhuma tecla. */
-@media (max-width: 650px) {
-  #phoneScreen .phone-panel-stage {
-    width: min(120vw, calc(87dvh * 0.54)) !important;
+    width: min(128vw, calc(87dvh * 0.54)) !important;
     max-height: 87dvh !important;
   }
   #phoneScreen .phone-panel-stage > .phone-code {
     left: 9% !important;
     top: 72% !important;
+    font-size: 8px !important;
   }
 }
