@@ -696,3 +696,25 @@
     font-weight: 500 !important;
   }
 }
+
+
+/* Mobile fine-tune 2026-11-26: slightly larger handset, keep all keypad keys visible.
+   Phone number follows the silver left bezel vertically; no badge or horizontal label. */
+@media (max-width: 650px) {
+  #phoneScreen .phone-panel-stage {
+    width: min(112vw, calc(97dvh * 0.54)) !important;
+    max-height: 97dvh !important;
+  }
+  #phoneScreen .phone-panel-stage > .phone-code {
+    left: 5.5% !important;
+    top: 51% !important;
+    transform: translate(-50%, -50%) rotate(-90deg) !important;
+    transform-origin: center center !important;
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    white-space: nowrap !important;
+  }
+}
