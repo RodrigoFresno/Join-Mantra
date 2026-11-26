@@ -708,7 +708,7 @@
     overflow: visible !important;
   }
   #phoneScreen .phone-panel-stage {
-    width: min(92vw, calc(87dvh * 0.54)) !important;
+    width: min(92vw, calc((100dvh - 84px) * 0.54 / 1.28)) !important;
     max-height: none !important;
     aspect-ratio: 540 / 1000 !important;
     flex: 0 0 auto !important;
