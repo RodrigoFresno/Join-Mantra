@@ -735,3 +735,28 @@
     font-size: 8px !important;
   }
 }
+
+
+/* Mobile viewport correction: use the browser's live viewport height.
+   Keeps the landing video, poster and handset on one consistent screen box.
+   Existing handset scale/position and all desktop rules remain untouched. */
+@media (max-width: 650px) {
+  html, body {
+    height: 100% !important;
+  }
+
+  #landing.landing:not(.hidden),
+  #posterScreen.poster-screen:not(.hidden),
+  #phoneScreen.phone-screen:not(.hidden) {
+    height: 100vh !important;
+    height: 100dvh !important;
+    min-height: 100vh !important;
+    min-height: 100dvh !important;
+    max-height: none !important;
+    box-sizing: border-box !important;
+  }
+
+  #landing.landing:not(.hidden) {
+    overflow: hidden !important;
+  }
+}
