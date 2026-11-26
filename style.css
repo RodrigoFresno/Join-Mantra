@@ -805,3 +805,16 @@
  #phoneScreen .phone-panel-stage { width: min(138vw, calc(112dvh * 0.54)) !important; max-height: 112dvh !important; }
  #phoneScreen .phone-panel-stage > .phone-code { left: 9% !important; top: 72% !important; font-size: 8px !important; }
 }
+
+
+/* v24 — voltar ao enquadramento completo: zoom leve sem cortar nenhuma tecla. */
+@media (max-width: 650px) {
+  #phoneScreen .phone-panel-stage {
+    width: min(102vw, calc(87dvh * 0.54)) !important;
+    max-height: 87dvh !important;
+  }
+  #phoneScreen .phone-panel-stage > .phone-code {
+    left: 9% !important;
+    top: 72% !important;
+  }
+}
