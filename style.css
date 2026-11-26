@@ -698,8 +698,8 @@
 }
 
 
-/* Mobile: aparelho em retrato, sem zoom adicional; apenas deslocamento vertical.
-   O número lateral fica explicitamente girado para leitura vertical. */
+/* Mobile: manter o tamanho ampliado já aprovado; apenas descer 12px.
+   Retrato e número lateral vertical. Desktop permanece intocado. */
 @media (max-width: 650px) {
   #phoneScreen.phone-screen:not(.hidden) {
     display: flex !important;
@@ -713,7 +713,7 @@
     max-height: none !important;
     aspect-ratio: 540 / 1000 !important;
     flex: 0 0 auto !important;
-    transform: translateY(12px) !important;
+    transform: translateY(12px) scale(1.28) !important;
     transform-origin: center center !important;
     margin: 0 auto !important;
   }
