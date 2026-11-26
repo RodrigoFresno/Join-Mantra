@@ -1,4 +1,28 @@
 (()=>{const $=id=>document.getElementById(id);const landing=$('landing'),posterScreen=$('posterScreen'),sheet=$('posterSheet'),manifesto=$('manifesto'),phoneScreen=$('phoneScreen'),join=$('join'),turnPoster=$('turnPoster'),phoneClosed=$('phoneClosed'),back=$('back'),digits=$('digits'),status=$('status'),player=$('player'),ring=$('ring'),phoneWrap=$('phoneWrap'),manifestoAudio=$('manifestoAudio');let number='',calling=false,ringTimer=null;const code='08008886448';
+const introVideo=document.querySelector('.intro-video');
+function keepIntroVideoPlaying(){
+ if(!introVideo||!landing||landing.classList.contains('hidden'))return;
+ introVideo.autoplay=true;
+ introVideo.muted=true;
+ introVideo.defaultMuted=true;
+ introVideo.playsInline=true;
+ introVideo.loop=true;
+ introVideo.controls=false;
+ if(introVideo.paused){
+  const attempt=introVideo.play();
+  if(attempt&&typeof attempt.catch==='function')attempt.catch(()=>{});
+ }
+}
+if(introVideo){
+ introVideo.addEventListener('loadeddata',keepIntroVideoPlaying);
+ introVideo.addEventListener('canplay',keepIntroVideoPlaying);
+ introVideo.addEventListener('ended',()=>{introVideo.currentTime=0;keepIntroVideoPlaying();});
+ window.addEventListener('pageshow',keepIntroVideoPlaying);
+ document.addEventListener('visibilitychange',()=>{if(!document.hidden)keepIntroVideoPlaying();});
+ document.addEventListener('pointerdown',keepIntroVideoPlaying,{capture:true,passive:true});
+ keepIntroVideoPlaying();
+}
+
 let phoneAudioContext=null;
 function phoneSound(type,key){
  try{
@@ -71,4 +95,4 @@ $('clear').addEventListener('click',e=>{phoneSound('click');feedback(e.currentTa
 $('end').addEventListener('click',e=>{phoneSound('click');feedback(e.currentTarget);if(calling||player.currentTime>0){stop();status.textContent='CALL ENDED'}else{status.textContent='READY';number='';refresh()}});
 $('call').addEventListener('click',async e=>{phoneSound('click');feedback(e.currentTarget);if(calling)return;if(number.replace(/\D/g,'')!==code){status.textContent='NUMBER NOT RECOGNIZED';return}calling=true;status.textContent='CALLING…';try{ring.currentTime=0;await ring.play()}catch(e){};ringTimer=setTimeout(()=>{if(!calling)return;ring.pause();ring.currentTime=0;status.textContent='CONNECTED';const n=Math.floor(Math.random()*7)+1;player.src=`assets/audio/${n}.mp3`;player.play().catch(()=>status.textContent='AUDIO READY')},Math.max(1800,(ring.duration||2)*1000));player.onended=()=>{calling=false;status.textContent='CALL ENDED'};});
 ['menu','navUp','navLeft','navCenter','navRight','navDown'].forEach(id=>$(id)?.addEventListener('click',e=>{feedback(e.currentTarget);status.textContent=id==='menu'?'MANTRA MENU': 'READY'}));
-if('serviceWorker'in navigator&&location.protocol!=='file:')window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js?v=19',{updateViaCache:'none'}).then(reg=>reg.update()).catch(()=>{}));})();
+if('serviceWorker'in navigator&&location.protocol!=='file:')window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js?v=20',{updateViaCache:'none'}).then(reg=>reg.update()).catch(()=>{}));})();
