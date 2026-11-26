@@ -522,12 +522,11 @@
   #landing.landing:not(.hidden),
   #posterScreen.poster-screen:not(.hidden),
   #phoneScreen.phone-screen:not(.hidden) {
-    position: fixed !important;
-    inset: 0 !important;
-    width: 100vw !important;
-    height: 100vh !important;
-    height: 100dvh !important;
-    min-height: 0 !important;
+    position: relative !important;
+    inset: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 100svh !important;
     max-height: none !important;
     margin: 0 !important;
     box-sizing: border-box !important;
