@@ -698,7 +698,7 @@
 }
 
 
-/* Mobile: manter o tamanho ampliado já aprovado; apenas descer 22px.
+/* Mobile: manter o tamanho ampliado já aprovado; apenas descer 32px.
    Retrato e número lateral vertical. Desktop permanece intocado. */
 @media (max-width: 650px) {
   #phoneScreen.phone-screen:not(.hidden) {
@@ -713,7 +713,7 @@
     max-height: none !important;
     aspect-ratio: 540 / 1000 !important;
     flex: 0 0 auto !important;
-    transform: translateY(22px) scale(1.28) !important;
+    transform: translateY(32px) scale(1.28) !important;
     transform-origin: center center !important;
     margin: 0 auto !important;
   }
