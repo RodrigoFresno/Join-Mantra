@@ -765,3 +765,122 @@
     pointer-events: none !important;
   }
 }
+
+
+/* iPhone final correction from the user's annotated comparison.
+   Desktop rules are intentionally untouched. */
+@media (max-width: 650px) {
+  #phoneScreen.phone-screen:not(.hidden) {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    min-height: 100dvh !important;
+    max-height: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    justify-content: center !important;
+    overflow: hidden !important;
+    background: #000 !important;
+    box-sizing: border-box !important;
+    overscroll-behavior: none !important;
+  }
+
+  /* Slightly enlarge the artwork beyond the viewport, matching reference 2:
+     top stays near the status area; bottom of the handset intentionally bleeds
+     off-screen instead of leaving the purple strip visible. */
+  #phoneScreen .phone-panel-stage {
+    position: relative !important;
+    display: block !important;
+    flex: 0 0 auto !important;
+    width: calc(112dvh * 0.54) !important;
+    height: 112dvh !important;
+    max-width: none !important;
+    max-height: none !important;
+    margin: 0 !important;
+    overflow: visible !important;
+    filter: none !important;
+    transform: translateY(3dvh) !important;
+  }
+
+  #phoneScreen .phone-panel-stage #phoneWrap {
+    position: relative !important;
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    max-height: none !important;
+    aspect-ratio: auto !important;
+    margin: 0 !important;
+    transform: none !important;
+  }
+
+  #phoneScreen .phone-panel-stage .panel-art {
+    position: absolute !important;
+    inset: 0 !important;
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: fill !important;
+    object-position: center !important;
+  }
+
+  /* Back-to-manifesto trigger: invisible touch area over the LEFT upper
+     minus/menu key, directly above the green call key. The green key remains
+     fully available to its original #call handler. */
+  #phoneScreen #phoneWrap > #back.back {
+    position: absolute !important;
+    z-index: 60 !important;
+    left: 12% !important;
+    top: 35.8% !important;
+    width: 23% !important;
+    height: 8.4% !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: block !important;
+    transform: none !important;
+    border: 0 !important;
+    border-radius: 30% !important;
+    background: transparent !important;
+    color: transparent !important;
+    font-size: 0 !important;
+    box-shadow: none !important;
+    opacity: 0 !important;
+    cursor: pointer !important;
+    touch-action: manipulation !important;
+  }
+
+  /* The phone number is plain, discreet lettering on the left blue/metal
+     edge—no sticker, badge, border, background or filled label. */
+  #phoneScreen .phone-panel-stage > .phone-code {
+    position: absolute !important;
+    z-index: 40 !important;
+    left: 12% !important;
+    top: 31% !important;
+    width: max-content !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    transform: translate(-50%, -50%) rotate(-90deg) !important;
+    transform-origin: center center !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    color: rgba(245,245,245,.92) !important;
+    font: 500 8px/1 monospace !important;
+    letter-spacing: .045em !important;
+    white-space: nowrap !important;
+    text-shadow: 0 1px 2px #000 !important;
+    box-shadow: none !important;
+    pointer-events: none !important;
+  }
+  #phoneScreen .phone-panel-stage > .phone-code strong {
+    color: inherit !important;
+    font-weight: 500 !important;
+  }
+}
