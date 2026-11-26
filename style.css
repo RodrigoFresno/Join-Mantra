@@ -905,3 +905,10 @@
     overflow: hidden !important;
   }
 }
+
+/* Intro video: autoplay loop without native player controls */
+#landing .intro-video{display:block;pointer-events:none;-webkit-user-select:none;user-select:none}
+#landing .intro-video::-webkit-media-controls,
+#landing .intro-video::-webkit-media-controls-panel,
+#landing .intro-video::-webkit-media-controls-play-button,
+#landing .intro-video::-webkit-media-controls-start-playback-button{display:none!important;-webkit-appearance:none}
