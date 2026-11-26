@@ -706,7 +706,7 @@
     flex-direction: column !important;
     align-items: center !important;
     justify-content: center !important;
-    overflow: hidden !important;
+    overflow: visible !important;
   }
   #phoneScreen .phone-panel-stage {
     width: min(92vw, calc(87dvh * 0.54)) !important;
