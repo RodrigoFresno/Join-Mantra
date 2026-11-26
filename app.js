@@ -1,4 +1,19 @@
 (()=>{const $=id=>document.getElementById(id);const landing=$('landing'),posterScreen=$('posterScreen'),sheet=$('posterSheet'),manifesto=$('manifesto'),phoneScreen=$('phoneScreen'),join=$('join'),turnPoster=$('turnPoster'),phoneClosed=$('phoneClosed'),back=$('back'),digits=$('digits'),status=$('status'),player=$('player'),ring=$('ring'),phoneWrap=$('phoneWrap'),manifestoAudio=$('manifestoAudio');let number='',calling=false,ringTimer=null;const code='08008886448';
+const introVideo=document.querySelector('.intro-video');
+function keepIntroVideoPlaying(){
+ if(!introVideo||!landing||landing.classList.contains('hidden'))return;
+ introVideo.muted=true;introVideo.defaultMuted=true;introVideo.playsInline=true;introVideo.loop=true;
+ if(introVideo.paused){const attempt=introVideo.play();if(attempt&&typeof attempt.catch==='function')attempt.catch(()=>{});}
+}
+if(introVideo){
+ introVideo.addEventListener('loadeddata',keepIntroVideoPlaying);
+ introVideo.addEventListener('canplay',keepIntroVideoPlaying);
+ introVideo.addEventListener('ended',()=>{introVideo.currentTime=0;keepIntroVideoPlaying();});
+ window.addEventListener('pageshow',keepIntroVideoPlaying);
+ document.addEventListener('visibilitychange',()=>{if(!document.hidden)keepIntroVideoPlaying();});
+ document.addEventListener('pointerdown',keepIntroVideoPlaying,{capture:true,passive:true});
+ keepIntroVideoPlaying();
+}
 let phoneAudioContext=null;
 function phoneSound(type,key){
  try{
@@ -51,7 +66,7 @@ async function paperSound(){
 
 function startManifestoAudio(){if(!manifestoAudio)return;manifestoAudio.loop=true;manifestoAudio.play().catch(e=>console.warn('Manifesto audio playback blocked until interaction',e));}
 function pauseManifestoAudio(){if(manifestoAudio)manifestoAudio.pause();}
-function revealManifesto(){posterScreen.classList.add('hidden');manifesto.classList.remove('hidden');window.scrollTo(0,0);startManifestoAudio();}
+function revealManifesto(){posterScreen.classList.add('hidden');manifesto.classList.remove('hidden');manifesto.scrollTop=0;window.scrollTo(0,0);startManifestoAudio();}
 const posterFlipHost=$('posterFlip');
 const turnButton=document.createElement('button');turnButton.type='button';turnButton.className='poster-turn-button';turnButton.setAttribute('aria-label','Virar página e abrir manifesto');turnButton.textContent='';posterFlipHost.appendChild(turnButton);
 turnButton.addEventListener('click',()=>{
