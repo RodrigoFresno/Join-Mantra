@@ -912,3 +912,47 @@
 #landing .intro-video::-webkit-media-controls-panel,
 #landing .intro-video::-webkit-media-controls-play-button,
 #landing .intro-video::-webkit-media-controls-start-playback-button{display:none!important;-webkit-appearance:none}
+
+
+/* 2026-11-26 — iPhone full-bleed viewport fix.
+   The earlier mobile overrides mixed document-flow sizing, svh/dvh and
+   fixed overlays. Keep the three visual screens attached to the viewport
+   edges so no body/background strip is exposed at the bottom. */
+@media (max-width: 650px) {
+  html, body {
+    width: 100% !important;
+    margin: 0 !important;
+  }
+
+  #landing.landing:not(.hidden),
+  #posterScreen.poster-screen:not(.hidden),
+  #phoneScreen.phone-screen:not(.hidden) {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  #landing.landing:not(.hidden),
+  #posterScreen.poster-screen:not(.hidden) {
+    overflow: hidden !important;
+  }
+
+  #landing .intro-video {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+
+  #phoneScreen.phone-screen:not(.hidden) {
+    padding: 0 !important;
+    overflow: hidden !important;
+  }
+}
